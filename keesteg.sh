@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -o nounset			#exits if there is an unbound variable (such as $1)
+set -o errexit			#exits if there is an error
+
 unset PASSWORD TMP CHKSUM1 CHKSUM2  #unsets the variables we will use.. just in case.
 
 echo -n "steghide password: "	#reads password for steghide
