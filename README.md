@@ -1,4 +1,4 @@
 KeeSteg
 =======
 
-A shell script to hide KeePassX databases with steghide
+A bash script to hide KeePassX databases with steghide
