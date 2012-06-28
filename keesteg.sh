@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -o nounset			#exits if there is an unbound variable (such as $1)
 set -o errexit			#exits if there is an error
