@@ -5,6 +5,12 @@ set -o errexit			#exits if there is an error
 
 unset PASSWORD TMP CHKSUM1 CHKSUM2  #unsets the variables we will use.. just in case.
 
+function clean_up {
+    # tidy exit function
+    exit			#todo
+}
+
+
 echo -n "Enter steghide password: "	#reads password for steghide
 stty -echo			#and stores it in a variable so that it can be reused
 read PASSWORD			#to re-embed the keepassx db
