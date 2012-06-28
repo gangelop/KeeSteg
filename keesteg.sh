@@ -7,6 +7,7 @@ unset PASSWORD TMP CHKSUM1 CHKSUM2  #unsets the variables we will use.. just in 
 
 function clean_up {
     # tidy exit function
+    echo "Bye Bye!"
     exit			#todo
 }
 
@@ -20,13 +21,6 @@ echo ""				#force a carriage return to be output (change line)
 
 TMP=$(mktemp)
 steghide --extract -f -sf $1 -xf $TMP -p $PASSWORD
-if [ 0 == $(du $TMP | cut -f1) ]	    #check if TMP file is empty
-then					    #if it is empty, exits
-    echo "File didn't extract. Exiting."
-    rm $TMP
-    unset PASSWORD TMP
-    exit 1
-fi
 
 
 CHKSUM1=$(cat $TMP | md5sum | cut -f1 -d" ") #gets md5sum before running keepassx
