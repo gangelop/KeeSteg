@@ -39,3 +39,4 @@ echo "Cleaning up..."
 rm $TMP					    #removes the temporarily extracted keepassx database.
 unset PASSWORD TMP CHKSUM1 CHKSUM2	    #unsets the variables.
 echo "Done!"
+exit
