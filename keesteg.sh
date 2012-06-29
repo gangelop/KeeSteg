@@ -3,8 +3,6 @@
 set -o nounset			#exits if there is an unbound variable (such as $1)
 set -o errexit			#exits if there is an error
 
-unset PASSWORD TMP CHKSUM1 CHKSUM2  #unsets the variables we will use.. just in case.
-
 function clean_up {
     # tidy exit function
     echo "Bye Bye!"
@@ -37,6 +35,5 @@ fi
 
 echo "Cleaning up..."
 rm $TMP					    #removes the temporarily extracted keepassx database.
-unset PASSWORD TMP CHKSUM1 CHKSUM2	    #unsets the variables.
 echo "Done!"
 exit
