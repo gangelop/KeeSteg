@@ -2,8 +2,8 @@ Tue Jun 26 18:02:16 EEST 2012
 Lots of stuff to do. 
 
 Checks:
+set traps
 Check if keepassx and steghide are installed. Also check for mktemp.
-Check if the user has input a filepath
 
 Extend functionality:
 create new databases
