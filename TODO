@@ -8,3 +8,4 @@ Check if keepassx and steghide are installed. Also check for mktemp.
 
 Extend functionality:
 create new databases
+option parsing? (getopts)
