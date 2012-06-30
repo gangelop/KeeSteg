@@ -3,6 +3,7 @@ Lots of stuff to do.
 
 Checks:
 set traps
+exit/cleanup function
 Check if keepassx and steghide are installed. Also check for mktemp.
 
 Extend functionality:
