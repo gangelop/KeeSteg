@@ -3,7 +3,8 @@
 set -o nounset			#exits if there is an unbound variable (such as $1)
 set -o errexit			#exits if there is an error
 
-function clean_up {
+function clean_up 
+{
     # tidy exit function
     echo "Bye Bye!"
     exit			#todo
