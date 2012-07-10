@@ -1,40 +1,43 @@
 #!/bin/bash
 
-set -o nounset			#exits if there is an unbound variable (such as $1)
-set -o errexit			#exits if there is an error
+#exits if there is an unbound vriable or an error
+set -o nounset
+set -o errexit
 
 function clean_up 
 {
     # tidy exit function
+    #todo
     echo "Bye Bye!"
-    exit			#todo
+    exit
 }
 
-
-echo -n "Enter steghide password: "	#reads password for steghide
-stty -echo			#and stores it in a variable so that it can be reused
-read PASSWORD			#to re-embed the keepassx db
+#Reads the password for steghide so that we can use it twice if we need
+#to re-embed the keepassx db later.
+echo -n "Enter steghide password: "
+stty -echo
+read PASSWORD
 stty echo
-echo ""				#force a carriage return to be output (change line)
+echo ""
 
 
 TMP=$(mktemp)
 steghide --extract -f -sf $1 -xf $TMP -p $PASSWORD
 
 
-CHKSUM1=$(cat $TMP | md5sum | cut -f1 -d" ") #gets md5sum before running keepassx
+CHKSUM1=$(cat $TMP | md5sum | cut -f1 -d" ")
 keepassx $TMP
-CHKSUM2=$(cat $TMP | md5sum | cut -f1 -d" ") #gets md5sum after running keepassx
-if [ $CHKSUM1 == $CHKSUM2 ]		    #checks before and after md5s to determine if the file was modified
+CHKSUM2=$(cat $TMP | md5sum | cut -f1 -d" ")
+if [ $CHKSUM1 == $CHKSUM2 ]
 then
     echo "No changes made. Closing."
-else					    #if it was modified, it re-embeds it in the stegofile
+else
     echo "Re-embeding. Please wait..." 
     steghide --embed -N -f -ef $TMP -cf $1 -p $PASSWORD
 fi
 
 
 echo "Cleaning up..."
-rm $TMP					    #removes the temporarily extracted keepassx database.
+rm $TMP
 echo "Done!"
 exit
