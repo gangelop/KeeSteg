@@ -6,7 +6,7 @@ set -o errexit
 
 function clean_up 
 {
-    # tidy exit function
+    #tidy exit function
     #todo
     echo "Bye Bye!"
     exit
