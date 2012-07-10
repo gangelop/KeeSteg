@@ -20,14 +20,16 @@ read PASSWORD
 stty echo
 echo ""
 
-
+#Extract db to a temporary file
 TMP=$(mktemp)
 steghide --extract -f -sf $1 -xf $TMP -p $PASSWORD
 
-
+#Checking db hash before and after running keepassx
 CHKSUM1=$(cat $TMP | md5sum | cut -f1 -d" ")
 keepassx $TMP
 CHKSUM2=$(cat $TMP | md5sum | cut -f1 -d" ")
+
+#if db hash has changed, re-embed it
 if [ $CHKSUM1 == $CHKSUM2 ]
 then
     echo "No changes made. Closing."
