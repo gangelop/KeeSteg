@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #exits if there is an unbound vriable or an error
-set -o nounset
+set -u nounset
 set -o errexit
 
 function clean_up 
