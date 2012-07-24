@@ -2,7 +2,7 @@
 
 #exits if there is an unbound vriable or an error
 set -u nounset
-set -o errexit
+set -e errexit
 
 function clean_up 
 {
